@@ -14,4 +14,7 @@ export class Author {
 
     @OneToMany(() => Book, (book) => book.author)
     books = new Array<Book>();
+
+    @Property({nullable:true})
+    deletedAt:Date;
 }

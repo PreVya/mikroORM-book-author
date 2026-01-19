@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, PrimaryKey, Property } from "@mikro-orm/core";
+import { DoubleType, Entity, ManyToOne, PrimaryKey, Property } from "@mikro-orm/core";
 import { Author } from "src/author/entities/author.entity";
 
 @Entity()
@@ -12,6 +12,12 @@ export class Book {
     @Property()
     publishedAt: Date;
 
-    @ManyToOne(() => Author,{nullable:true})
-    author: Author;
+    @ManyToOne(() => Author,{nullable:false})
+    author!: Author;
+
+    @Property()
+    price!: number;
+
+    @Property({nullable:true})
+    deletedAt:Date;
 }
